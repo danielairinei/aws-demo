@@ -26,4 +26,9 @@ public class DemoController {
         return ResponseEntity.ok().body(entityList);
     }
 
+    @GetMapping("/test")
+    public String getStringus(){
+        return "Deploy cu succes :)";
+    }
+
 }
