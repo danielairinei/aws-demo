@@ -33,9 +33,9 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Push Docker Image
-          uses: docker/build-push-action@v2
-          with:
-            context: .
-            dockerfile: Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/aws-demo:latest
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/aws-demo:latest
