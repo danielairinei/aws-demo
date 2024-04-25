@@ -1,15 +1,28 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
 
-    @GetMapping
-    public String getDemo() {
-        return "Hey Larisa e fraiera si se gadila";
+    @Autowired
+    private DemoRepository repository;
+
+    @PostMapping
+    public ResponseEntity<DemoEntity> addEntity(@RequestBody DemoEntity entity) {
+        repository.save(entity);
+        return ResponseEntity.ok().body(entity);
     }
+
+    @GetMapping
+    public ResponseEntity<List<DemoEntity>> getEntities() {
+        List<DemoEntity> entityList = repository.findAll();
+        return ResponseEntity.ok().body(entityList);
+    }
+
 }
