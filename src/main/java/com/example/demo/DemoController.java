@@ -19,7 +19,6 @@ public class DemoController {
         return ResponseEntity.ok().body(entity);
     }
 
-
     @GetMapping
     public ResponseEntity<List<DemoEntity>> getEntities() {
         List<DemoEntity> entityList = repository.findAll();
