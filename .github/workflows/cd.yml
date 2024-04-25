@@ -4,15 +4,15 @@ on:
   workflow_run:
     workflows: ["CI Pipeline"]
     types:
-      -completed
+      - completed
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
     steps:
-    - name: Pull Docker Image
-      run: sudo docker pull danielairinei/aws-demo:latest
-    - name: Delete old docker container
-      run: docker rm -f aws-demo-container || true
-    - name: Run latest docker container
-      run: docker run -d -p 80:8080 --name aws-demo-container danielairinei/aws-de
+      - name: Pull Docker Image
+        run: sudo docker pull danielairinei/aws-demo:latest
+      - name: Delete old docker container
+        run: docker rm -f aws-demo-container || true
+      - name: Run latest docker container
+        run: docker run -d -p 80:8080 --name aws-demo-container danielairinei/aws-demo:latest
